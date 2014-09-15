@@ -6,8 +6,8 @@ setup(
     author='Robin',
     author_email='robin.winslow@canonical.com',
     packages=[
-        'django.versioned_static',
-        'django.versioned_static.templatetags'
+        'django_versioned_static',
+        'django_versioned_static.templatetags'
     ],
     description=(
         'A template tag for generating a URL for a static file, '
