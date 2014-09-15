@@ -14,7 +14,7 @@ setup(
         'with a version string which will be effectively unique '
         'based on the contents of the file.'
     ),
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     install_requires=[
         "Django >= 1.3",
     ],
