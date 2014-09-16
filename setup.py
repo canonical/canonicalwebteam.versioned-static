@@ -1,13 +1,14 @@
-from distutils.core import setup
+from setuptools import setup
 
 setup(
-    name='django-versioned-static',
+    name='django-versioned-static-url',
     version='0.1',
     author='Robin',
     author_email='robin.winslow@canonical.com',
+    url='https://github.com/ubuntudesign/django-versioned-static-url',
     packages=[
-        'django_versioned_static',
-        'django_versioned_static.templatetags'
+        'django_versioned_static_url',
+        'django_versioned_static_url.templatetags'
     ],
     description=(
         'A template tag for generating a URL for a static file, '
