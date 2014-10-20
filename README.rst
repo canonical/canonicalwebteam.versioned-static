@@ -18,7 +18,7 @@ Installation
 .. code:: python
 
     # settings.py
-    INSTALLED_APPS += ['django.versioned_static']
+    INSTALLED_APPS += ['django_versioned_static_url']
 
 Usage
 -----
