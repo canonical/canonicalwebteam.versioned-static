@@ -19,7 +19,7 @@ def versioned_static(file_path):
 
     if full_path:
         with open(full_path) as file_contents:
-            # 6 chars of sha1 hex
+            # 7 chars of sha1 hex
             sha1_hex = sha1(file_contents.read()).hexdigest()[:7]
 
     versioned_url_path = url + '?v=' + sha1_hex
