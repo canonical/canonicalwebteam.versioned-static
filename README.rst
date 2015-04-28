@@ -10,7 +10,7 @@ Example
 
 ::
 
-    /static/css/global.css?a23bd10
+    /static/css/global.css?v=a23bd10
 
 Installation
 ------------
