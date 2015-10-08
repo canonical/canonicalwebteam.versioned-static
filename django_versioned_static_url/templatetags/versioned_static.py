@@ -22,9 +22,11 @@ def versioned_static(file_path):
     full_path = find(file_path)
     url = static(file_path)
 
-    if full_path:
-        if not isfile(full_path):
-            raise Http404('Static file not found')
+    versioned_url_path = url
+
+    if isinstance(full_path, str):
+        # if not isfile(full_path):
+        #     raise Http404('Static file not found')
         with open(full_path) as file_contents:
             file_data = file_contents.read()
 
@@ -36,7 +38,7 @@ def versioned_static(file_path):
             sha1_hash = sha1(file_data)
             sha1_hex = sha1_hash.hexdigest()[:7]
 
-    versioned_url_path = url + '?v=' + sha1_hex
+            versioned_url_path += '?v=' + sha1_hex
 
     return versioned_url_path
 

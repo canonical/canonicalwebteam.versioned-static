@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-versioned-static-url',
-    version='0.4',
+    version='0.5',
     author='Robin',
     author_email='robin.winslow@canonical.com',
     url='https://github.com/ubuntudesign/django-versioned-static-url',
