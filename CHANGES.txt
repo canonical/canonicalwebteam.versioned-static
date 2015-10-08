@@ -1,3 +1,4 @@
 v0.1, 2014-06-05 -- Initial release.
 v0.2, 2015-10-01 -- Python 3 readiness.
-v0.2, 2015-10-01 -- 404 if file missing
+v0.3, 2015-10-09 -- 404 if file missing
+v0.4, 2015-10-09 -- Normalise encoding

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='django-versioned-static-url',
-    version='0.3',
+    version='0.4',
     author='Robin',
     author_email='robin.winslow@canonical.com',
     url='https://github.com/ubuntudesign/django-versioned-static-url',
@@ -18,5 +18,6 @@ setup(
     long_description=open('README.rst').read(),
     install_requires=[
         "Django >= 1.3",
+        "chardet >= 2.3.0",
     ],
 )
