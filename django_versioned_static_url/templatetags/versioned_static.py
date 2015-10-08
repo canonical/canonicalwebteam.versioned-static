@@ -1,8 +1,11 @@
+# System
 from hashlib import sha1
+from os.path import isfile
 
 from django import template
 from django.contrib.staticfiles.finders import find
 from django.templatetags.static import static
+from django.http import Http404
 
 
 register = template.Library()
@@ -18,6 +21,8 @@ def versioned_static(file_path):
     url = static(file_path)
 
     if full_path:
+        if not isfile(full_path):
+            raise Http404('Static file not found')
         with open(full_path) as file_contents:
             # 7 chars of sha1 hex
             sha1_hash = sha1(file_contents.read().encode('utf-8'))
