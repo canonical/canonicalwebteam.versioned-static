@@ -26,6 +26,7 @@ Usage
 The following template code:
 
 .. code:: html
+
     {% load versioned_static %}
     <link rel="stylesheet" href="{% versioned_static 'css/global.css' %}" />
 
