@@ -23,9 +23,9 @@ Installation
 Usage
 -----
 
-.. code:: html
+The following template code:
 
-    # template file
+.. code:: html
     {% load versioned_static %}
     <link rel="stylesheet" href="{% versioned_static 'css/global.css' %}" />
 
