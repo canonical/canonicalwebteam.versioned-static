@@ -29,8 +29,7 @@ Usage
     {% load versioned_static %}
     <link rel="stylesheet" href="{% versioned_static 'css/global.css' %}" />
 
-Outputs
-~~~~~~~
+Outputs:
 
 .. code:: html
 
