@@ -24,7 +24,7 @@ def versioned_static(file_path):
 
     versioned_url_path = url
 
-    if isinstance(full_path, str):
+    if isinstance(full_path, basestring):
         # if not isfile(full_path):
         #     raise Http404('Static file not found')
         with open(full_path) as file_contents:
