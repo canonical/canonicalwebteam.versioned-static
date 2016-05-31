@@ -1,6 +1,5 @@
 # System
 from hashlib import sha1
-from os.path import isfile
 
 # Modules
 import chardet
@@ -8,7 +7,6 @@ import logging
 from django import template
 from django.contrib.staticfiles.finders import find
 from django.templatetags.static import static
-from django.http import Http404
 
 
 logger = logging.getLogger(__name__)
