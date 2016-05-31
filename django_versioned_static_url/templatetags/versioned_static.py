@@ -3,6 +3,7 @@ from hashlib import sha1
 from os.path import isfile
 
 # Modules
+import chardet
 from django import template
 from django.contrib.staticfiles.finders import find
 from django.templatetags.static import static
@@ -31,6 +32,11 @@ def versioned_static(file_path):
         file_data = file_contents.read()
 
         # # Normalise encoding
+        try:
+            encoding = chardet.detect(file_data)['encoding']
+            file_data = file_data.decode(encoding)
+        except ValueError:
+            pass
         file_data = file_data.encode('utf-8')
 
         # 7 chars of sha1 hex
