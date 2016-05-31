@@ -1,14 +1,15 @@
 # System
 from hashlib import sha1
-from os.path import isfile
 
 # Modules
 import chardet
+import logging
 from django import template
 from django.contrib.staticfiles.finders import find
 from django.templatetags.static import static
-from django.http import Http404
 
+
+logger = logging.getLogger(__name__)
 
 register = template.Library()
 
@@ -22,23 +23,29 @@ def versioned_static(file_path):
     full_path = find(file_path)
     url = static(file_path)
 
+    if not full_path:
+        msg = 'Could not find static file: {0}'.format(file_path)
+        logger.warning(msg)
+        return url
+
     versioned_url_path = url
 
-    if isinstance(full_path, basestring):
-        # if not isfile(full_path):
-        #     raise Http404('Static file not found')
-        with open(full_path) as file_contents:
-            file_data = file_contents.read()
+    with open(full_path, 'r') as file_contents:
+        file_data = file_contents.read()
 
-            # Normalise encoding
+        # # Normalise encoding
+        try:
             encoding = chardet.detect(file_data)['encoding']
-            file_data = file_data.decode(encoding).encode('utf-8')
+            file_data = file_data.decode(encoding)
+        except ValueError:
+            pass
+        file_data = file_data.encode('utf-8')
 
-            # 7 chars of sha1 hex
-            sha1_hash = sha1(file_data)
-            sha1_hex = sha1_hash.hexdigest()[:7]
+        # 7 chars of sha1 hex
+        sha1_hash = sha1(file_data)
+        sha1_hex = sha1_hash.hexdigest()[:7]
 
-            versioned_url_path += '?v=' + sha1_hex
+        versioned_url_path += '?v=' + sha1_hex
 
     return versioned_url_path
 
