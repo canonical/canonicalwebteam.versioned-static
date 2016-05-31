@@ -4,11 +4,14 @@ from os.path import isfile
 
 # Modules
 import chardet
+import logging
 from django import template
 from django.contrib.staticfiles.finders import find
 from django.templatetags.static import static
 from django.http import Http404
 
+
+logger = logging.getLogger(__name__)
 
 register = template.Library()
 
@@ -20,12 +23,13 @@ def versioned_static(file_path):
     """
 
     full_path = find(file_path)
+    url = static(file_path)
 
     if not full_path:
         msg = 'Could not find static file: {0}'.format(file_path)
-        raise Exception(msg)
+        logger.warning(msg)
+        return url
 
-    url = static(file_path)
     versioned_url_path = url
 
     with open(full_path, 'r') as file_contents:
