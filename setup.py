@@ -18,6 +18,6 @@ setup(
     long_description=open('README.rst').read(),
     install_requires=[
         "Django >= 1.3",
-        "chardet >= 2.3.0",
+        "cchardet >= 1.0.0",
     ],
 )

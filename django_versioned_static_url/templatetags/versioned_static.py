@@ -2,7 +2,7 @@
 from hashlib import sha1
 
 # Modules
-import chardet
+import cchardet
 import logging
 from django import template
 from django.contrib.staticfiles.finders import find
@@ -30,12 +30,12 @@ def versioned_static(file_path):
 
     versioned_url_path = url
 
-    with open(full_path, 'r') as file_contents:
+    with open(full_path, 'rb') as file_contents:
         file_data = file_contents.read()
 
         # # Normalise encoding
         try:
-            encoding = chardet.detect(file_data)['encoding']
+            encoding = cchardet.detect(file_data)['encoding']
             file_data = file_data.decode(encoding)
         except ValueError:
             pass
