@@ -22,6 +22,9 @@ def versioned_static(file_path):
     full_path = find(file_path)
     url = static(file_path)
 
+    if type(full_path) is list and len(full_path) > 0:
+        full_path = full_path[0]
+
     if not full_path:
         msg = 'Could not find static file: {0}'.format(file_path)
         logger.warning(msg)
