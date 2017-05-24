@@ -1,8 +1,7 @@
 # System
-from hashlib import sha1
+from hashlib import md5
 
 # Modules
-import cchardet
 import logging
 from django import template
 from django.contrib.staticfiles.finders import find
@@ -28,26 +27,14 @@ def versioned_static(file_path):
         logger.warning(msg)
         return url
 
-    versioned_url_path = url
+    # Use MD5 as we care about speed a lot
+    # and not security in this case
+    file_hash = md5()
+    with open(full_path, "rb") as file_contents:
+        file_hash.update(file_contents.read(128000))
 
-    with open(full_path, 'rb') as file_contents:
-        file_data = file_contents.read()
-
-        # # Normalise encoding
-        try:
-            encoding = cchardet.detect(file_data)['encoding']
-            file_data = file_data.decode(encoding)
-        except ValueError:
-            pass
-        file_data = file_data.encode('utf-8')
-
-        # 7 chars of sha1 hex
-        sha1_hash = sha1(file_data)
-        sha1_hex = sha1_hash.hexdigest()[:7]
-
-        versioned_url_path += '?v=' + sha1_hex
-
-    return versioned_url_path
+    return url + '?v=' + file_hash.hexdigest()[:7]
 
 
 register.simple_tag(versioned_static)
+
