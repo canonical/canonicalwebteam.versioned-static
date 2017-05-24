@@ -1,7 +1,7 @@
-Django versioned static
+canonical-webteam.versioned-static
 =======================
 
-A ``{% versioned_static %}`` template tag for generating a URL for a
+A ``{% versioned_static %}`` Django template tag for generating a URL for a
 static file, with a version string which will be effectively unique
 based on the contents of the file.
 
