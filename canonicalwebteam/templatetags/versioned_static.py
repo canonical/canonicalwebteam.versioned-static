@@ -34,10 +34,10 @@ def versioned_static(file_path):
     # and not security in this case
     file_hash = md5()
     with open(full_path, "rb") as file_contents:
-        file_hash.update(file_contents.read(128000))
+        for chunk in iter(lambda: file_contents.read(4096), b""):
+            file_hash.update(chunk)
 
     return url + '?v=' + file_hash.hexdigest()[:7]
 
 
 register.simple_tag(versioned_static)
-

@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='canonicalwebteam.versioned-static',
-    version='1.0.1',
+    version='1.0.2',
     author='Canonical webteam',
     author_email='webteam+pypi@canonical.com',
     url='https://github.com/ubuntudesign/django-versioned-static-url',

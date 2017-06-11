@@ -7,3 +7,4 @@ v0.7, 2016-05-31 -- Update for Python 3 and better error handling
 v0.8, 2016-07-04 -- Use ccardet for faster encoding management
 v1.0.0, 2017-05-24 -- Rename to canonicalwebteam.versioned-static; Remove need for cchardet; Switch to md5
 v1.0.1, 2017-05-24 -- Hotfix: Handle lists returned from staticfiles.finder.find
+v1.0.2, 2017-06-11 -- Hotfix: Read all chunks of files to create hash
