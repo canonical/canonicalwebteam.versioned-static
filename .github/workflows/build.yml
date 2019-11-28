@@ -10,7 +10,10 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: Install system dependencies
-      run: sudo apt update && sudo apt install -y --no-install-recommends python3-setuptools python3-wheel
+      run: sudo apt update && sudo apt install -y --no-install-recommends python3-setuptools python3-wheel && pip3 install twine
 
     - name: Build package
       run: python3 setup.py sdist bdist_wheel
+
+    - name: Twine check
+      run: python3 -m twine check dist/*
